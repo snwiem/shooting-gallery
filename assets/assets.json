@@ -1,0 +1,20 @@
+{
+  "fonts": [
+    {
+      "id": "bold",
+      "res": "fonts/Kenney Bold.ttf"
+    },
+    {
+      "id": "future",
+      "res": "fonts/Kenney Future.ttf"
+    },
+    {
+      "id": "future_narrow",
+      "res": "fonts/Kenney Future Narrow.ttf"
+    },
+    {
+      "id": "future_square",
+      "res": "fonts/Kenney Future Square.ttf"
+    }
+  ]
+}
