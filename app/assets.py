@@ -20,13 +20,28 @@ class AssetManager:
             AssetManager.__instance = self
         self.assets_config = None
         self.fonts = {}
-        self.load_assets()
+        self.sprites = {}
+        self.sounds = {}
+        self._load_assets()
+
+    def _load_assets(self):
+        with open('assets/assets.json') as assets_file:
+            self.assets_config = json.load(assets_file)
 
     def _get_asset(self, asset_type, asset_id):
         match = next((i for i in self.assets_config[asset_type] if i['id'] == asset_id), None)
         if not match:
             raise Exception("No such asset")
         return match['res']
+
+    def get_sound(self, sound_id):
+        key = sound_id
+        if key in self.sounds:
+            return self.sounds[key]
+        sound_res = self._get_asset("sounds", key)
+        sound = pygame.mixer.Sound(os.path.join('assets', sound_res))
+        self.sounds[key] = sound
+        return sound
 
     def get_font(self, id, size):
         font_key = f"{id}_{size}"
@@ -37,21 +52,18 @@ class AssetManager:
         self.fonts[font_key] = font
         return font
 
-    def load_assets(self):
-        with open('assets/assets.json') as assets_file:
-            self.assets_config = json.load(assets_file)
+    def get_sprite(self, sprite_id, copy=False):
+        sprite_key = sprite_id
+        if sprite_key in self.sprites:
+            sprite = self.sprites[sprite_key]
+        else:
+            sprite_res = self._get_asset("sprites", sprite_id)
+            sprite = pygame.image.load(os.path.join('assets', sprite_res))
+            self.sprites[sprite_key] = sprite
+        if copy:
+            sprite = sprite.copy()
+        return sprite
 
-    # FONT_TITLE = 0x01
-    #
-    # def __load_fonts(self):
-    #     self._fonts = {
-    #         AssetManager.FONT_TITLE: pygame.font.Font('assets/fonts/Kenney Bold.ttf', 24)
-    #     }
-    #
-    # def get_font(self, font_id, font_size):
-    #     font_key = f"{font_id}_{font_size}"
-    #     if self._fonts.has_key(font_key):
-    #         return self._fonts[font_key]
-    #     font = pygame.font.Font()
-    #
-    #     return self._fonts[font]
+
+
+

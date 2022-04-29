@@ -27,3 +27,6 @@ class Scene:
 
     def on_focus(self):
         pass
+
+    def emit_event(self, event_id: int):
+        pygame.event.post(pygame.event.Event(event_id))

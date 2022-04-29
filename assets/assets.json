@@ -16,5 +16,17 @@
       "id": "future_square",
       "res": "fonts/Kenney Future Square.ttf"
     }
+  ],
+  "sprites": [
+    {
+      "id": "crosshair",
+      "res": "sprites/crosshair_red_large.png"
+    }
+  ],
+  "sounds": [
+    {
+      "id": "shotgun-fire",
+      "res": "sounds/shotgun_fire_1.wav"
+    }
   ]
 }

@@ -3,7 +3,7 @@ import logging
 import pygame
 
 from app.assets import AssetManager
-from app.events import UE_GAME_QUIT
+from app.events import UE_GAME_QUIT, UE_GAME_START
 from app.scene import Scene
 from app.settings import SCREEN_WIDTH, SCREEN_HEIGHT
 
@@ -32,6 +32,9 @@ class TitleScene(Scene):
                 if ev.key == pygame.K_ESCAPE:
                     self.do_exit()
                     break
+                if ev.key == pygame.K_RETURN:
+                    self.do_start()
+                    break
             logging.debug(f"Dropping event: {ev}")
 
     def draw(self):
@@ -40,4 +43,7 @@ class TitleScene(Scene):
         self.screen.blit(self.subtitle, self.subtitle_pos)
 
     def do_exit(self):
-        pygame.event.post(pygame.event.Event(UE_GAME_QUIT))
+        self.emit_event(UE_GAME_QUIT)
+
+    def do_start(self):
+        self.emit_event(UE_GAME_START)
