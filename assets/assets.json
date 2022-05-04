@@ -21,12 +21,48 @@
     {
       "id": "crosshair",
       "res": "sprites/crosshair_red_large.png"
+    },
+    {
+      "id": "bullet_empty_long",
+      "res": "sprites/icon_bullet_empty_long.png"
+    },
+    {
+      "id": "bullet_empty_short",
+      "res": "sprites/icon_bullet_empty_short.png"
+    },
+    {
+      "id": "bullet_gold_long",
+      "res": "sprites/icon_bullet_gold_long.png"
+    },
+    {
+      "id": "bullet_gold_short",
+      "res": "sprites/icon_bullet_gold_short.png"
+    },
+    {
+      "id": "bullet_silver_long",
+      "res": "sprites/icon_bullet_silver_long.png"
+    },
+    {
+      "id": "bullet_silver_short",
+      "res": "sprites/icon_bullet_silver_short.png"
     }
   ],
   "sounds": [
     {
       "id": "shotgun-fire",
       "res": "sounds/shotgun_fire_1.wav"
+    },
+    {
+      "id": "bullet-reload",
+      "res": "sounds/gun_reload.wav"
+    },
+    {
+      "id": "bullet-reload-start",
+      "res": "sounds/gun_open.wav"
+    },
+    {
+      "id": "bullet-reload-end",
+      "res": "sounds/gun_close.wav"
     }
   ]
 }
